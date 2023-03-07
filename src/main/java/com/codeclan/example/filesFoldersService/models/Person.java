@@ -17,17 +17,17 @@ public class Person {
     @Column(name = "name")
     private String name;
 
-//    @JsonIgnoreProperties({"folders"})
-//    @OneToMany(mappedBy = "folders")
-//    @Column(name = "folders")
-//    private List<Folder> folders;
+    @JsonIgnoreProperties({"person"})
+    @OneToMany(mappedBy = "person")
+    @Column(name = "folders")
+    private List<Folder> folders;
 
     public Person() {
     }
 
     public Person(String name) {
         this.name = name;
-//        this.folders = new ArrayList<>();
+        this.folders = new ArrayList<>();
     }
 
     public Long getId() {
@@ -44,5 +44,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Folder> getFolders() {
+        return folders;
+    }
+
+    public void setFolders(List<Folder> folders) {
+        this.folders = folders;
     }
 }
