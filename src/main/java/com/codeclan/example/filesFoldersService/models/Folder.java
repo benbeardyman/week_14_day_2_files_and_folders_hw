@@ -3,6 +3,8 @@ package com.codeclan.example.filesFoldersService.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "folders")
@@ -21,12 +23,19 @@ public class Folder {
     @JsonIgnoreProperties({"folders"})
     private Person person;
 
+    @JsonIgnoreProperties({"folder"})
+    @OneToMany(mappedBy = "folder")
+    @Column(name = "files")
+    private List<File> files;
+
+
     public Folder() {
     }
 
     public Folder(String title, Person person) {
         this.title = title;
         this.person = person;
+        this.files = new ArrayList<>();
     }
 
     public Long getId() {
@@ -51,5 +60,13 @@ public class Folder {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 }
