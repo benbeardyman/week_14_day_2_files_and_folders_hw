@@ -19,7 +19,6 @@ public class Person {
 
     @JsonIgnoreProperties({"person"})
     @OneToMany(mappedBy = "person")
-    @Column(name = "folders")
     private List<Folder> folders;
 
     public Person() {

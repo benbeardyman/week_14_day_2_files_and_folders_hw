@@ -25,7 +25,6 @@ public class Folder {
 
     @JsonIgnoreProperties({"folder"})
     @OneToMany(mappedBy = "folder")
-    @Column(name = "files")
     private List<File> files;
 
 
